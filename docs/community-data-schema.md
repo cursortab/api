@@ -19,28 +19,28 @@ identifying.**
   "after_cursor_ws": false,
   "last_char": ")",
   "last_nonws_char": ")",
+  "indentation_level": 8,
   "prev_filter_shown": true,
+  "filter_score": 0.72,
   "completion_lines": 3,
   "completion_additions": 3,
   "completion_deletions": 0,
   "completion_source": "typing",
   "manually_triggered": false,
-  "display_duration_ms": 1200,
-  "time_since_last_decision_ms": 4500,
-  "recent_actions": ["IC", "IC", "IC", "DC", "IC"],
-  "has_diagnostics": false,
-  "treesitter_scope": "function",
   "provider": "sweepapi",
-  "edit_count": 18,
-  "predicted_edit_ratio": 0.33,
-  "time_since_last_edit_ms": 800,
-  "typing_speed": 4.2,
-  "completions_since_accept": 3,
-  "indentation_level": 2,
   "stage_index": 0,
   "cursor_target_distance": 12,
   "is_prefetched": false,
-  "filter_score": 0.72
+  "display_duration_ms": 1200,
+  "time_since_last_decision_ms": 4500,
+  "time_since_last_edit_ms": 800,
+  "typing_speed": 4.2,
+  "recent_actions": ["IC", "IC", "IC", "DC", "IC"],
+  "has_diagnostics": false,
+  "treesitter_scope": "function",
+  "edit_count": 18,
+  "predicted_edit_ratio": 0.33,
+  "completions_since_accept": 3
 }
 ```
 
@@ -94,17 +94,17 @@ CREATE TABLE events (
   is_prefetched          INTEGER NOT NULL DEFAULT 0, -- 0/1
 
   -- Timing
-  display_duration_ms        INTEGER NOT NULL,
+  display_duration_ms         INTEGER NOT NULL,
   time_since_last_decision_ms INTEGER NOT NULL,
-  time_since_last_edit_ms    INTEGER NOT NULL,
-  typing_speed               REAL    NOT NULL,
+  time_since_last_edit_ms     INTEGER NOT NULL,
+  typing_speed                REAL    NOT NULL,
 
   -- Session context
-  recent_actions         TEXT    NOT NULL, -- JSON array, e.g. '["IC","IC","DC"]'
-  has_diagnostics        INTEGER NOT NULL, -- 0/1
-  treesitter_scope       TEXT    NOT NULL,
-  edit_count             INTEGER NOT NULL,
-  predicted_edit_ratio   REAL    NOT NULL,
+  recent_actions           TEXT    NOT NULL, -- JSON array, e.g. '["IC","IC","DC"]'
+  has_diagnostics          INTEGER NOT NULL, -- 0/1
+  treesitter_scope         TEXT    NOT NULL,
+  edit_count               INTEGER NOT NULL,
+  predicted_edit_ratio     REAL    NOT NULL,
   completions_since_accept INTEGER NOT NULL
 );
 
@@ -139,7 +139,7 @@ The client sends the following JSON body to `POST /events`. Server-side fields
 | `after_cursor_ws`             | `bool`     | client | Whether all text after the cursor on the current line is whitespace (or cursor is at EOL)                                                                                             |
 | `last_char`                   | `string`   | client | Last character of the prefix, or `""` if the prefix is empty                                                                                                                          |
 | `last_nonws_char`             | `string`   | client | Last non-whitespace character of the prefix, or `""` if none                                                                                                                          |
-| `indentation_level`           | `int`      | client | Number of leading indent units (tab stops) on the current line                                                                                                                        |
+| `indentation_level`           | `int`      | client | Number of leading whitespace characters on the current line                                                                                                                           |
 | `prev_filter_shown`           | `bool`     | client | Whether the previous contextual filter invocation resulted in showing a completion                                                                                                    |
 | `filter_score`                | `float`    | client | Score from the current contextual filter model (`0.0`-`1.0`)                                                                                                                          |
 | `completion_lines`            | `int`      | client | Number of lines in the completion suggestion                                                                                                                                          |
