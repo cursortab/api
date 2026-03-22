@@ -4,6 +4,12 @@
   "main": "src/index.ts",
   "compatibility_date": "2025-03-22",
   "minify": true,
+  "observability": {
+    "logs": {
+      "enabled": false,
+      "invocation_logs": true
+    }
+  },
   "ratelimits": [
     {
       "name": "WRITE_LIMITER",
