@@ -48,7 +48,7 @@ app.onError((err, c) => {
   return c.json({ error: "Internal server error" }, 500);
 });
 
-// Rate limit per IP: 600/min writes, 60/min reads
+// Rate limit per IP: 200/10s writes, 60/min reads
 app.use("*", async (c, next) => {
   const ip = c.req.header("cf-connecting-ip") ?? "unknown";
   const limiter =
