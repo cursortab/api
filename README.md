@@ -28,13 +28,17 @@ Deploys automatically on push to `main` via GitHub Actions.
 
 Database migrations run automatically on first request.
 
+## Live
+
+The production API is at `https://api.cursortab.com`.
+
 ## Endpoints
 
-| Method | Path      | Rate limited | Description                                            |
-| ------ | --------- | ------------ | ------------------------------------------------------ |
-| `POST` | `/events` | No           | Ingest a completion event                              |
-| `GET`  | `/events` | 60/min/IP    | Paginated read (`?limit=&offset=&device_id=&outcome=`) |
-| `GET`  | `/stats`  | 60/min/IP    | Aggregate statistics                                   |
+| Method | Path      | Rate limit | Description                                            |
+| ------ | --------- | ---------- | ------------------------------------------------------ |
+| `POST` | `/events` | 200/10s/IP | Ingest a completion event                              |
+| `GET`  | `/events` | 60/min/IP  | Paginated read (`?limit=&offset=&device_id=&outcome=`) |
+| `GET`  | `/stats`  | 60/min/IP  | Aggregate statistics                                   |
 
 See [docs/community-data-schema.md](docs/community-data-schema.md) for the full
 schema.
