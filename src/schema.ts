@@ -30,10 +30,6 @@ export const eventSchema = z.object({
   last_nonws_char: z.string().max(1),
   indentation_level: z.int().nonnegative(),
 
-  // Filter state
-  prev_filter_shown: z.boolean(),
-  filter_score: z.number().min(0).max(1),
-
   // Completion properties
   completion_lines: z.int().nonnegative(),
   completion_additions: z.int().nonnegative(),
@@ -49,7 +45,6 @@ export const eventSchema = z.object({
 
   // Timing
   display_duration_ms: z.int().nonnegative(),
-  time_since_last_decision_ms: z.int().nonnegative(),
   time_since_last_edit_ms: z.int().nonnegative(),
   typing_speed: z.number().nonnegative(),
 

@@ -20,8 +20,6 @@ identifying.**
   "last_char": ")",
   "last_nonws_char": ")",
   "indentation_level": 8,
-  "prev_filter_shown": true,
-  "filter_score": 0.72,
   "completion_lines": 3,
   "completion_additions": 3,
   "completion_deletions": 0,
@@ -32,7 +30,6 @@ identifying.**
   "cursor_target_distance": 12,
   "is_prefetched": false,
   "display_duration_ms": 1200,
-  "time_since_last_decision_ms": 4500,
   "time_since_last_edit_ms": 800,
   "typing_speed": 4.2,
   "recent_actions": ["IC", "IC", "IC", "DC", "IC"],
@@ -70,8 +67,6 @@ The client sends the following JSON body to `POST /events`. Server-side fields
 | `last_char`                   | `string`   | client | Last character of the prefix, or `""` if the prefix is empty                                                                                                                          |
 | `last_nonws_char`             | `string`   | client | Last non-whitespace character of the prefix, or `""` if none                                                                                                                          |
 | `indentation_level`           | `int`      | client | Number of leading whitespace characters on the current line                                                                                                                           |
-| `prev_filter_shown`           | `bool`     | client | Whether the previous contextual filter invocation resulted in showing a completion                                                                                                    |
-| `filter_score`                | `float`    | client | Score from the current contextual filter model (`0.0`-`1.0`)                                                                                                                          |
 | `completion_lines`            | `int`      | client | Number of lines in the completion suggestion                                                                                                                                          |
 | `completion_additions`        | `int`      | client | Number of lines added by the completion                                                                                                                                               |
 | `completion_deletions`        | `int`      | client | Number of lines deleted/replaced by the completion                                                                                                                                    |
@@ -82,7 +77,6 @@ The client sends the following JSON body to `POST /events`. Server-side fields
 | `cursor_target_distance`      | `int`      | client | Lines between the cursor and the completion target (`0` when no navigation needed)                                                                                                    |
 | `is_prefetched`               | `bool`     | client | Whether the completion was speculatively prefetched ahead of the user arriving at the target                                                                                          |
 | `display_duration_ms`         | `int`      | client | Milliseconds the completion was visible before the user acted (analytics only — not a gating model input)                                                                             |
-| `time_since_last_decision_ms` | `int`      | client | Milliseconds since the last accept/reject/suppress decision                                                                                                                           |
 | `time_since_last_edit_ms`     | `int`      | client | Milliseconds since the most recent edit in the current file                                                                                                                           |
 | `typing_speed`                | `float`    | client | Average typing speed (chars/sec) over the ~3 seconds preceding the completion trigger                                                                                                 |
 | `recent_actions`              | `string[]` | client | Last 5 user actions before the completion trigger. Values: `"IC"` (insert char), `"IS"` (insert selection), `"DC"` (delete char), `"DS"` (delete selection), `"CM"` (cursor movement) |

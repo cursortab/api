@@ -3,7 +3,8 @@ import { Hono } from "hono";
 import { cors } from "hono/cors";
 import { HTTPException } from "hono/http-exception";
 import { ZodError } from "zod";
-import { createDB, insertEvent, migrate, queryEvents } from "./db";
+import { createDB, insertEvent, queryEvents } from "./db";
+import { migrate } from "./migrate";
 import { eventSchema } from "./schema";
 
 type Bindings = {

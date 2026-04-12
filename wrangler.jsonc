@@ -4,6 +4,7 @@
   "main": "src/index.ts",
   "compatibility_date": "2025-03-22",
   "minify": true,
+  "rules": [{ "type": "Text", "globs": ["**/*.sql"], "fallthrough": false }],
   "observability": {
     "logs": {
       "enabled": false,
